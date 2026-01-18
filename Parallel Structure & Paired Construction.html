@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PSAT-Style Grammar Practice — Parallel, Pairs & Comparisons (65 Questions)</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --paper:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --shadow: 0 10px 24px rgba(0,0,0,.08);
+      --radius: 16px;
+      --accent:#2563eb;
+      --good:#16a34a;
+      --bad:#dc2626;
+      --warn:#d97706;
+
+      --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+              "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.55; }
+    .wrap{ max-width:980px; margin:0 auto; padding:18px; }
+    header{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 14px;
+      position:sticky;
+      top:12px;
+      z-index:10;
+    }
+    h1{ margin:0 0 6px 0; font-size:18px; letter-spacing:.2px; }
+    .sub{ margin:0 0 12px 0; color:var(--muted); font-size:13px; }
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      border-top:1px dashed var(--line); padding-top:12px; margin-top:10px;
+    }
+    .left,.right{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    button,.pill{
+      border:1px solid var(--line); background:#fff; color:var(--text);
+      border-radius:12px; padding:9px 12px; font-size:13px; cursor:pointer; transition:.15s ease;
+    }
+    button:hover{ transform:translateY(-1px); box-shadow:0 6px 14px rgba(0,0,0,.08); }
+    button.primary{ border-color:rgba(37,99,235,.25); background:rgba(37,99,235,.08); }
+    button.danger{ border-color:rgba(220,38,38,.25); background:rgba(220,38,38,.06); }
+    .pill{ cursor:default; background:rgba(17,24,39,.03); }
+    .toggle{
+      display:flex; align-items:center; gap:8px; padding:7px 10px;
+      border:1px solid var(--line); border-radius:12px; background:#fff; font-size:13px;
+    }
+    .toggle input{ transform:translateY(1px); }
+    .content{ margin-top:14px; display:grid; gap:12px; }
+    .card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .qhead{
+      display:flex; gap:10px; align-items:flex-start; justify-content:space-between; margin-bottom:10px;
+    }
+    .qnum{ font-weight:700; font-size:14px; min-width:64px; color:var(--accent); }
+    .qtag{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line); border-radius:999px; padding:4px 8px; white-space:nowrap;
+    }
+    .prompt{ font-size:14px; margin:0; }
+    .options{ margin-top:10px; display:grid; gap:8px; }
+    label.opt{
+      display:flex; gap:10px; align-items:flex-start; padding:10px 10px;
+      border:1px solid var(--line); border-radius:12px; cursor:pointer; background:#fff; transition:.12s ease;
+    }
+    label.opt:hover{ border-color:rgba(37,99,235,.35); background:rgba(37,99,235,.03); }
+    input[type="radio"]{ margin-top:3px; }
+    code.inline{
+      background:rgba(17,24,39,.06);
+      border:1px solid rgba(17,24,39,.08);
+      padding:2px 6px;
+      border-radius:8px;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12.5px;
+    }
+    .teacher{
+      margin-top:12px; padding:12px; border-radius:12px;
+      border:1px dashed var(--line); background:rgba(17,24,39,.02);
+      display:none;
+    }
+    .teacher .ans{ font-weight:800; }
+    .teacher .why{ margin-top:6px; color:var(--muted); font-size:13px; }
+
+    .result{
+      margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:var(--muted); font-size:13px;
+    }
+    .badge{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:5px 10px;
+      background:#fff;
+      color:var(--text);
+      font-size:12.5px;
+    }
+    .badge.good{ border-color:rgba(22,163,74,.25); background:rgba(22,163,74,.07); }
+    .badge.bad{ border-color:rgba(220,38,38,.25); background:rgba(220,38,38,.06); }
+    .badge.warn{ border-color:rgba(217,119,6,.25); background:rgba(217,119,6,.07); }
+
+    @media print{
+      header{ position:static; box-shadow:none; }
+      button,.toggle{ display:none !important; }
+      body{ background:#fff; }
+      .card{ box-shadow:none; }
+      .teacher{ display:block !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>PSAT-Style Grammar Practice — Parallel Structure, Paired Constructions & Comparisons (65 Questions)</h1>
+      <p class="sub">
+        Original items (not from any test). Choose the best option (A–D).
+        Turn on <code class="inline">Teacher Mode</code> for answers + brief explanations.
+      </p>
+
+      <div class="toolbar">
+        <div class="left">
+          <button class="primary" id="gradeBtn">Grade</button>
+          <button id="showMissedBtn">Show Missed</button>
+          <button class="danger" id="resetBtn">Reset</button>
+          <button id="shuffleBtn">Shuffle Questions</button>
+          <button id="printBtn">Print</button>
+        </div>
+        <div class="right">
+          <div class="toggle" title="Shows answers and explanations.">
+            <input type="checkbox" id="teacherToggle" />
+            <label for="teacherToggle"><strong>Teacher Mode</strong></label>
+          </div>
+          <span class="pill" id="progressPill">Answered: 0 / 65</span>
+          <span class="pill" id="scorePill">Score: —</span>
+        </div>
+      </div>
+
+      <div class="result" id="resultRow" style="display:none;">
+        <span class="badge good" id="bCorrect"></span>
+        <span class="badge bad" id="bWrong"></span>
+        <span class="badge warn" id="bBlank"></span>
+      </div>
+    </header>
+
+    <main class="content" id="quiz"></main>
+  </div>
+
+  <script>
+    // Original items (not from any test). PSAT-like: focus on structure, parallelism, pairing, and comparisons.
+    const QUESTIONS = [
+      // 1–10 Parallel / Pair basics
+      {id:1, tag:"Parallel (to-infinitive)", stem:"Choose the sentence with correct parallel structure.",
+        options:{A:"The program aims to lower costs, improving efficiency, and to increase transparency.",
+                 B:"The program aims to lower costs, to improve efficiency, and to increase transparency.",
+                 C:"The program aims lowering costs, to improve efficiency, and to increase transparency.",
+                 D:"The program aims to lower costs, efficiency improvement, and to increase transparency."},
+        answer:"B", why:"After <em>aims</em>, keep <strong>to + verb</strong> parallel: <strong>to lower / to improve / to increase</strong>."},
+      {id:2, tag:"Parallel (gerunds)", stem:"Choose the best revision for parallelism.",
+        options:{A:"She likes hiking, to swim, and cycling on weekends.",
+                 B:"She likes to hike, swimming, and to cycle on weekends.",
+                 C:"She likes hiking, swimming, and cycling on weekends.",
+                 D:"She likes hiking, swimming, and to cycle on weekends."},
+        answer:"C", why:"Maintain one form: <strong>gerunds</strong> (hiking / swimming / cycling)."},
+      {id:3, tag:"Parallel (nouns)", stem:"Choose the sentence that maintains parallel structure in a list.",
+        options:{A:"The report emphasizes accuracy, clarity, and to be concise.",
+                 B:"The report emphasizes accurate, clear, and concise writing.",
+                 C:"The report emphasizes accuracy, clarity, and concision.",
+                 D:"The report emphasizes accuracy, clear expression, and concise."},
+        answer:"C", why:"All three items are nouns: <strong>accuracy / clarity / concision</strong>."},
+      {id:4, tag:"Comparisons (parallel adjectives)", stem:"Choose the grammatically correct sentence.",
+        options:{A:"The new policy is more effective than the old one and costs less.",
+                 B:"The new policy is more effective than the old one and less costly.",
+                 C:"The new policy is more effective than the old one and than costs less.",
+                 D:"The new policy is more effective than the old one and less it costs."},
+        answer:"B", why:"Parallel comparison: adjective phrase + adjective phrase (<strong>more effective</strong> / <strong>less costly</strong>)."},
+      {id:5, tag:"Parallel (that-clauses)", stem:"Choose the best option with parallel clauses.",
+        options:{A:"He said that the plan was risky and it would fail.",
+                 B:"He said that the plan was risky and that it would fail.",
+                 C:"He said the plan was risky and that it will fail.",
+                 D:"He said that the plan is risky and that it would fail."},
+        answer:"B", why:"Repeat <em>that</em> to keep two coordinated <strong>that-clauses</strong> parallel."},
+      {id:6, tag:"Pair (not only...but also)", stem:"Choose the sentence with correct correlative (paired) structure.",
+        options:{A:"She not only finished the report but also was presenting it.",
+                 B:"She not only finished the report but also presented it.",
+                 C:"She finished not only the report but also was presenting it.",
+                 D:"She not only finished but also the report presented it."},
+        answer:"B", why:"Match forms after the pair: verb + verb (<em>finished / presented</em>)."},
+      {id:7, tag:"Pair (either...or)", stem:"Choose the most grammatically consistent sentence.",
+        options:{A:"Either the manager will approve the request or the request will be denied.",
+                 B:"Either the manager will approve the request or deny it.",
+                 C:"Either the manager will approve the request or denial will happen.",
+                 D:"Either the manager will approve or the request will be denying."},
+        answer:"B", why:"Keep the same structure after each correlative element: <strong>approve ... or deny</strong>."},
+      {id:8, tag:"Pair (neither...nor) agreement", stem:"Choose the correct sentence.",
+        options:{A:"Neither the students nor the teacher were prepared.",
+                 B:"Neither the students nor the teacher was prepared.",
+                 C:"Neither the students nor the teacher are prepared.",
+                 D:"Neither the students nor the teacher have prepared."},
+        answer:"B", why:"Agreement often follows the nearer subject: <strong>the teacher was</strong>."},
+      {id:9, tag:"Parallel (prepositions)", stem:"Choose the best option.",
+        options:{A:"The memo applies to interns, to contractors, and employees.",
+                 B:"The memo applies to interns, contractors, and employees.",
+                 C:"The memo applies interns, contractors, and to employees.",
+                 D:"The memo applies to interns, contractors, and in employees."},
+        answer:"B", why:"One preposition can govern a parallel series: <strong>applies to X, Y, and Z</strong>."},
+      {id:10, tag:"Parallel (verb tense)", stem:"Choose the sentence with consistent verb tense and structure.",
+        options:{A:"She reviewed the data, writes the summary, and submitted the file.",
+                 B:"She reviewed the data, wrote the summary, and submitted the file.",
+                 C:"She reviews the data, wrote the summary, and submits the file.",
+                 D:"She reviewed the data, wrote the summary, and submits the file."},
+        answer:"B", why:"All verbs should match in tense: <strong>reviewed / wrote / submitted</strong>."},
+
+      // 11–20 Mixed
+      {id:11, tag:"Parallel (adjectives)", stem:"Choose the best sentence.",
+        options:{A:"The lecture was insightful, with clarity, and engaging.",
+                 B:"The lecture was insightful, clear, and engaging.",
+                 C:"The lecture was insightfully, clear, and engaging.",
+                 D:"The lecture was insightful, clarity, and engaging."},
+        answer:"B", why:"Three adjectives in parallel: <strong>insightful / clear / engaging</strong>."},
+      {id:12, tag:"Parallel (structure shift)", stem:"Choose the option that fixes the structure shift.",
+        options:{A:"The candidate promised to cut taxes, reducing debt, and that jobs would grow.",
+                 B:"The candidate promised to cut taxes, to reduce debt, and to grow jobs.",
+                 C:"The candidate promised cutting taxes, reducing debt, and that jobs would grow.",
+                 D:"The candidate promised to cut taxes, reduce debt, and that jobs would grow."},
+        answer:"B", why:"Maintain <strong>to + verb</strong> throughout."},
+      {id:13, tag:"Pair (both...and)", stem:"Choose the sentence with correct pairing and parallelism.",
+        options:{A:"The proposal benefits both employees and for employers.",
+                 B:"The proposal benefits both employees and employers.",
+                 C:"The proposal benefits both for employees and employers.",
+                 D:"The proposal benefits employees both and employers."},
+        answer:"B", why:"<strong>both</strong> coordinates two like nouns: <strong>employees and employers</strong>."},
+      {id:14, tag:"Comparisons (as...as)", stem:"Choose the grammatically correct sentence.",
+        options:{A:"Reading widely is as important as to study carefully.",
+                 B:"Reading widely is as important as studying carefully.",
+                 C:"To read widely is as important as study carefully.",
+                 D:"Reading widely is as important as careful study."},
+        answer:"B", why:"Match forms: <strong>reading</strong> ... as ... <strong>studying</strong>."},
+      {id:15, tag:"Parallel (noun phrases)", stem:"Choose the sentence that is most grammatically consistent.",
+        options:{A:"The workshop offered practical tools, clear examples, and how to apply them.",
+                 B:"The workshop offered practical tools, clear examples, and application strategies.",
+                 C:"The workshop offered tools that were practical, examples that were clear, and apply them.",
+                 D:"The workshop offered practical tools, clearly explained examples, and how applying works."},
+        answer:"B", why:"Three noun phrases in parallel: <strong>tools / examples / strategies</strong>."},
+      {id:16, tag:"Pair (not only...but also)", stem:"Choose the best sentence.",
+        options:{A:"Not only the analyst checked the numbers, but also the manager did.",
+                 B:"The analyst not only checked the numbers but also verified the sources.",
+                 C:"The analyst checked not only the numbers but also was verifying the sources.",
+                 D:"The analyst not only checked but also the numbers verified."},
+        answer:"B", why:"Keep parallel verbs after the paired structure: <strong>checked / verified</strong>."},
+      {id:17, tag:"Parallel (articles)", stem:"Choose the best option.",
+        options:{A:"The study examined the causes, effects, and the solutions.",
+                 B:"The study examined causes, the effects, and solutions.",
+                 C:"The study examined the causes, the effects, and the solutions.",
+                 D:"The study examined causes, effects, and the solutions."},
+        answer:"C", why:"If you use <strong>the</strong> for each noun, keep it consistent."},
+      {id:18, tag:"Parallel (infinitives)", stem:"Choose the sentence that fixes the mismatch.",
+        options:{A:"He decided to postpone the meeting and rescheduling it for next week.",
+                 B:"He decided postponing the meeting and to reschedule it for next week.",
+                 C:"He decided to postpone the meeting and to reschedule it for next week.",
+                 D:"He decided to postpone the meeting and rescheduled it for next week."},
+        answer:"C", why:"After <em>decided</em>, keep <strong>to + verb</strong> parallel."},
+      {id:19, tag:"Pair (either...or) agreement", stem:"Choose the correct sentence.",
+        options:{A:"Either the assistants or the director are attending the meeting.",
+                 B:"Either the assistants or the director is attending the meeting.",
+                 C:"Either the assistants or the director were attending the meeting.",
+                 D:"Either the assistants or the director have attending the meeting."},
+        answer:"B", why:"Agreement follows the nearer subject: <strong>the director is</strong>."},
+      {id:20, tag:"Pair + prepositions", stem:"Choose the best option.",
+        options:{A:"She is interested not only in economics but also political philosophy.",
+                 B:"She is interested not only in economics but also in political philosophy.",
+                 C:"She is interested not only economics but also in political philosophy.",
+                 D:"She is interested not only in economics but also political."},
+        answer:"B", why:"Keep the same preposition: <strong>in X</strong> / <strong>in Y</strong>."},
+
+      // 21–30 Clause-level / patterning
+      {id:21, tag:"Parallel (pattern across series)", stem:"Choose the option that best maintains a consistent pattern.",
+        options:{A:"The actor delivers a monologue as the audience listens; a singer performs as listeners fall silent; as spectators watch, dancers glide.",
+                 B:"The actor delivers a monologue as the audience listens; a singer performs as listeners fall silent; dancers glide as spectators watch.",
+                 C:"The actor delivers a monologue; as the audience listens, a singer performs; dancers glide across the stage.",
+                 D:"As the audience listens, the actor delivers a monologue; a singer performs; spectators watch."},
+        answer:"B", why:"All three keep: <strong>main clause (performer action) + as-clause (audience reaction)</strong>."},
+      {id:22, tag:"Parallel (that-clauses)", stem:"Choose the best sentence.",
+        options:{A:"The memo states that the deadline is firm and revisions will be limited.",
+                 B:"The memo states that the deadline is firm and that revisions will be limited.",
+                 C:"The memo states the deadline is firm and that revisions are limited.",
+                 D:"The memo states that the deadline is firm and revisions are limiting."},
+        answer:"B", why:"Two coordinated <strong>that-clauses</strong> work best: <strong>that ... and that ...</strong>."},
+      {id:23, tag:"Pair (neither...nor)", stem:"Choose the best option.",
+        options:{A:"Neither the CEO nor the board supports the plan or wants to delay it.",
+                 B:"Neither the CEO nor the board supports the plan nor wants to delay it.",
+                 C:"Neither the CEO nor the board supports the plan and wants to delay it.",
+                 D:"Neither the CEO nor the board support the plan nor wants to delay it."},
+        answer:"B", why:"Keep the pair: <strong>neither...nor</strong> (not mixing with <em>or</em>)."},
+      {id:24, tag:"Parallel (-ing after preposition)", stem:"Choose the correct sentence.",
+        options:{A:"The guide focuses on drafting arguments, revising them, and how to present them.",
+                 B:"The guide focuses on drafting arguments, revising them, and presenting them.",
+                 C:"The guide focuses on to draft arguments, to revise them, and presenting them.",
+                 D:"The guide focuses on drafts, revising, and present."},
+        answer:"B", why:"After <em>on</em>, keep parallel <strong>-ing</strong> forms."},
+      {id:25, tag:"Pair (both...and)", stem:"Choose the best option.",
+        options:{A:"The policy affects both large firms and small.",
+                 B:"The policy affects both large firms and small firms.",
+                 C:"The policy affects large firms both and small firms.",
+                 D:"The policy affects both large and small firms and businesses."},
+        answer:"B", why:"Strict parallel: <strong>large firms / small firms</strong>."},
+      {id:26, tag:"Parallel (auxiliary governs series)", stem:"Choose the sentence with correct parallel structure.",
+        options:{A:"The team will review the draft, will edit the figures, and submit the final version.",
+                 B:"The team will review the draft, edit the figures, and submit the final version.",
+                 C:"The team will reviewing the draft, edit the figures, and submit the final version.",
+                 D:"The team reviews the draft, will edit the figures, and will submit the final version."},
+        answer:"B", why:"One auxiliary can govern all: <strong>will review, edit, and submit</strong>."},
+      {id:27, tag:"Comparisons (adj + to-inf)", stem:"Choose the best sentence.",
+        options:{A:"The task was easier than expected and more quickly completed.",
+                 B:"The task was easier than expected and quicker to complete.",
+                 C:"The task was easier than expected and it was quicker completing.",
+                 D:"The task was easier than expected and more quick completion."},
+        answer:"B", why:"Parallel complements: <strong>easier</strong> ... and <strong>quicker to complete</strong>."},
+      {id:28, tag:"Pair (either...or) nouns", stem:"Choose the best option.",
+        options:{A:"Applicants must submit either a transcript or to provide a recommendation letter.",
+                 B:"Applicants must submit either a transcript or a recommendation letter.",
+                 C:"Applicants must submit either submitting a transcript or a recommendation letter.",
+                 D:"Applicants must submit either a transcript or recommend."},
+        answer:"B", why:"Parallel nouns after the pair."},
+      {id:29, tag:"Parallel (verbs)", stem:"Choose the sentence with the best parallelism.",
+        options:{A:"The talk explained the concept, gave examples, and how it can be used.",
+                 B:"The talk explained the concept, giving examples, and applied it.",
+                 C:"The talk explained the concept, offered examples, and discussed its uses.",
+                 D:"The talk explained the concept, examples were offered, and its uses were discussed."},
+        answer:"C", why:"Three coordinated past-tense verbs: <strong>explained / offered / discussed</strong>."},
+      {id:30, tag:"Pair (not only...but also)", stem:"Choose the correct sentence.",
+        options:{A:"The rule applies not only to students but also teachers.",
+                 B:"The rule applies not only to students but also to teachers.",
+                 C:"The rule applies not only students but also to teachers.",
+                 D:"The rule applies not only to students but teachers also."},
+        answer:"B", why:"Repeat the preposition: <strong>to X</strong> / <strong>to Y</strong>."},
+
+      // 31–40
+      {id:31, tag:"Parallel (adjective/participle)", stem:"Choose the best option.",
+        options:{A:"The memo was confusing, poorly written, and it lacked examples.",
+                 B:"The memo was confusing, poorly written, and lacking examples.",
+                 C:"The memo was confusing, wrote poorly, and lacking examples.",
+                 D:"The memo was confusing, poorly written, and it was lacking examples."},
+        answer:"B", why:"Parallel complements: <strong>confusing / poorly written / lacking</strong>."},
+      {id:32, tag:"Parallel (verbs after modal)", stem:"Choose the sentence with correct parallelism.",
+        options:{A:"To solve the problem, you must identify assumptions, test evidence, and to revise conclusions.",
+                 B:"To solve the problem, you must identify assumptions, test evidence, and revise conclusions.",
+                 C:"To solve the problem, you must identifying assumptions, testing evidence, and revise conclusions.",
+                 D:"To solve the problem, you must identify assumptions, testing evidence, and revising conclusions."},
+        answer:"B", why:"After <em>must</em>, keep base verbs parallel: <strong>identify / test / revise</strong>."},
+      {id:33, tag:"Pair (neither...nor) complements", stem:"Choose the best option.",
+        options:{A:"The explanation was neither clear nor it was complete.",
+                 B:"The explanation was neither clear nor complete.",
+                 C:"The explanation was neither clearly nor complete.",
+                 D:"The explanation neither was clear nor complete."},
+        answer:"B", why:"After <em>was</em>, use parallel complements: <strong>clear</strong> / <strong>complete</strong>."},
+      {id:34, tag:"Parallel (avoid clause intrusions)", stem:"Choose the sentence that avoids a structural break.",
+        options:{A:"The plan required careful budgeting, detailed scheduling, and that the team communicate daily.",
+                 B:"The plan required careful budgeting, detailed scheduling, and daily communication.",
+                 C:"The plan required to budget carefully, to schedule in detail, and communication daily.",
+                 D:"The plan required careful budgeting, scheduling in detail, and that the team communicated daily."},
+        answer:"B", why:"All items are noun phrases."},
+      {id:35, tag:"Pair (both...and) agreement", stem:"Choose the correct sentence.",
+        options:{A:"Both the coach and the players was satisfied.",
+                 B:"Both the coach and the players were satisfied.",
+                 C:"Both the coach and the players is satisfied.",
+                 D:"Both the coach and the players has satisfied."},
+        answer:"B", why:"<strong>both...and</strong> creates a plural subject → <strong>were</strong>."},
+      {id:36, tag:"Comparisons (elliptical than)", stem:"Choose the best option.",
+        options:{A:"The article is more persuasive than it is informative.",
+                 B:"The article is more persuasive than informative.",
+                 C:"The article is more persuasive than it informs.",
+                 D:"The article is more persuade than informative."},
+        answer:"B", why:"Elliptical comparison keeps parallel adjectives: <strong>more persuasive than informative</strong>."},
+      {id:37, tag:"Pair (either...or) adjectives", stem:"Choose the best option.",
+        options:{A:"The solution is either practical or it is innovative.",
+                 B:"The solution is either practical or innovative.",
+                 C:"The solution either is practical or innovative.",
+                 D:"The solution is either practicality or innovative."},
+        answer:"B", why:"Parallel complements: <strong>practical</strong> / <strong>innovative</strong>."},
+      {id:38, tag:"Parallel (gerunds)", stem:"Choose the correct sentence.",
+        options:{A:"He admitted lying, cheating, and that he stole money.",
+                 B:"He admitted lying, cheating, and stealing money.",
+                 C:"He admitted to lie, to cheat, and stealing money.",
+                 D:"He admitted lying, cheated, and stealing money."},
+        answer:"B", why:"Keep parallel <strong>-ing</strong> forms."},
+      {id:39, tag:"Parallel (nouns)", stem:"Choose the best option.",
+        options:{A:"The study focuses on memory, attention, and how people decide.",
+                 B:"The study focuses on memory, attention, and decision-making.",
+                 C:"The study focuses on memory, attending, and decision-making.",
+                 D:"The study focuses on memory, attention, and to decide."},
+        answer:"B", why:"Keep items as nouns."},
+      {id:40, tag:"Pair (not only...but also) inversion", stem:"Choose the best sentence.",
+        options:{A:"Not only did the team meet the deadline, but also it improved quality.",
+                 B:"Not only did the team meet the deadline, but it also improved quality.",
+                 C:"Not only the team met the deadline, but it also improved quality.",
+                 D:"Not only did the team meet, but also improved the deadline."},
+        answer:"B", why:"Correct inversion after <strong>not only</strong> and correct placement of <strong>also</strong>."},
+
+      // 41–50
+      {id:41, tag:"Parallel (verbs)", stem:"Choose the sentence with the most consistent structure.",
+        options:{A:"The editor checked facts, polished style, and the citations were verified.",
+                 B:"The editor checked facts, polished style, and verified citations.",
+                 C:"The editor checked facts, polishing style, and verified citations.",
+                 D:"The editor checked facts, to polish style, and verified citations."},
+        answer:"B", why:"Three coordinated past-tense verbs."},
+      {id:42, tag:"Pair (neither...nor) verbs", stem:"Choose the best option.",
+        options:{A:"Neither the policy reduces costs nor it increases fairness.",
+                 B:"Neither the policy reduces costs nor increases fairness.",
+                 C:"Neither the policy reduced costs nor increases fairness.",
+                 D:"Neither the policy reduce costs nor increase fairness."},
+        answer:"B", why:"Parallel verbs with shared subject: <strong>reduces</strong> / <strong>increases</strong>."},
+      {id:43, tag:"Parallel (adjectives)", stem:"Choose the best revision.",
+        options:{A:"The plan’s strengths are flexibility, affordability, and it is reliable.",
+                 B:"The plan’s strengths are flexible, affordable, and reliability.",
+                 C:"The plan’s strengths are flexible, affordable, and reliable.",
+                 D:"The plan’s strengths are flexibility, affordable, and reliable."},
+        answer:"C", why:"After <em>are</em>, keep all complements as adjectives."},
+      {id:44, tag:"Pair (both...and) phrases", stem:"Choose the best option.",
+        options:{A:"The training covers both how to write clearly and concise editing.",
+                 B:"The training covers both writing clearly and editing concisely.",
+                 C:"The training covers both to write clearly and editing concisely.",
+                 D:"The training covers both clear writing and editing concise."},
+        answer:"B", why:"Parallel <strong>-ing</strong> phrases: <strong>writing</strong> / <strong>editing</strong>."},
+      {id:45, tag:"Parallel (faulty coordination)", stem:"Choose the sentence that avoids faulty coordination.",
+        options:{A:"She revised the introduction and the conclusion was expanded.",
+                 B:"She revised the introduction and expanded the conclusion.",
+                 C:"She revised the introduction and expanding the conclusion.",
+                 D:"She revised the introduction and to expand the conclusion."},
+        answer:"B", why:"Both coordinated verbs should share the same subject."},
+      {id:46, tag:"Pair (either...or) complements", stem:"Choose the best option.",
+        options:{A:"You can either submit the form online or by mail.",
+                 B:"You can either submit the form online or mailing it.",
+                 C:"You can either online submit the form or by mail.",
+                 D:"You can submit either online the form or mail."},
+        answer:"A", why:"Parallel complements after <strong>either</strong>/<strong>or</strong>: <strong>online</strong> / <strong>by mail</strong>."},
+      {id:47, tag:"Comparisons (as...as)", stem:"Choose the best sentence.",
+        options:{A:"The explanation was as clear as it was concise.",
+                 B:"The explanation was as clear as concise.",
+                 C:"The explanation was as clearly as it was concise.",
+                 D:"The explanation was as clear as it was concisely."},
+        answer:"A", why:"Parallel adjective complements in an <strong>as...as</strong> structure."},
+      {id:48, tag:"Parallel (verbs)", stem:"Choose the sentence with the cleanest parallel structure.",
+        options:{A:"The policy offers stability, lowers risk, and you can plan long-term.",
+                 B:"The policy offers stability, lowers risk, and enables long-term planning.",
+                 C:"The policy offers stability, lowering risk, and enables long-term planning.",
+                 D:"The policy offers stable conditions, lower risk, and enabling long-term planning."},
+        answer:"B", why:"Three coordinated verbs: <strong>offers / lowers / enables</strong>."},
+      {id:49, tag:"Pair (not only...but also) nouns", stem:"Choose the best option.",
+        options:{A:"The course teaches not only grammar but also how to read faster.",
+                 B:"The course teaches not only grammar but also speed reading.",
+                 C:"The course teaches not only grammar but also to read faster.",
+                 D:"The course teaches not only grammar but also reading faster how."},
+        answer:"B", why:"Parallel nouns: <strong>grammar</strong> / <strong>speed reading</strong>."},
+      {id:50, tag:"Paragraph-level consistency", stem:"A series describes performer actions followed by audience reactions. Choose the option that best preserves a consistent clause pattern.",
+        options:{A:"A poet recites as listeners lean in; a comedian speaks as the room laughs; as critics judge, a painter steps back.",
+                 B:"A poet recites as listeners lean in; a comedian speaks as the room laughs; a painter steps back as critics judge.",
+                 C:"A poet recites; listeners lean in; a comedian speaks; the room laughs; critics judge; a painter steps back.",
+                 D:"As listeners lean in, a poet recites; a comedian speaks; a painter steps back."},
+        answer:"B", why:"All three keep: <strong>main clause</strong> + <strong>as-clause</strong>."},
+
+      // ===== Comparisons-focused (51–65) =====
+      {id:51, tag:"Comparisons (than + pronoun case)", stem:"Choose the most grammatically correct sentence in formal style.",
+        options:{A:"The director trusted her more than me.",
+                 B:"The director trusted her more than I.",
+                 C:"The director trusted her more than myself.",
+                 D:"The director trusted her more than she did I."},
+        answer:"B", why:"In formal comparisons, the implied clause is <em>than I (do)</em>. (Option A is ambiguous: it can mean <em>more than he trusted me</em>.)"},
+      {id:52, tag:"Comparisons (ambiguity control)", stem:"Choose the clearest sentence (least ambiguous).",
+        options:{A:"She respects the manager more than the assistant.",
+                 B:"She respects the manager more than the assistant does.",
+                 C:"She respects the manager more than the assistant.",
+                 D:"She respects the manager more than the assistant respects."},
+        answer:"B", why:"Adding the implied verb clarifies the comparison: <strong>more than the assistant does</strong>."},
+      {id:53, tag:"Comparisons (parallel structure with than)", stem:"Choose the best sentence.",
+        options:{A:"He is more interested in results than in the process.",
+                 B:"He is more interested in results than the process.",
+                 C:"He is more interested in results than process.",
+                 D:"He is more interested results than in the process."},
+        answer:"A", why:"Keep the preposition parallel: <strong>in results</strong> / <strong>in the process</strong>."},
+      {id:54, tag:"Comparisons (as...as + form)", stem:"Choose the sentence with correct parallel structure.",
+        options:{A:"The solution is as efficient as it is cost-effective.",
+                 B:"The solution is as efficiently as it is cost-effective.",
+                 C:"The solution is as efficient as cost-effectively.",
+                 D:"The solution is as efficiency as it is cost-effective."},
+        answer:"A", why:"After <em>is</em>, use parallel adjective complements: <strong>efficient</strong> / <strong>cost-effective</strong>."},
+      {id:55, tag:"Comparisons (less vs fewer)", stem:"Choose the best sentence.",
+        options:{A:"The revised plan uses less resources than the original.",
+                 B:"The revised plan uses fewer resources than the original.",
+                 C:"The revised plan uses lesser resources than the original.",
+                 D:"The revised plan uses few resources than the original."},
+        answer:"B", why:"Use <strong>fewer</strong> with countable nouns like <strong>resources</strong>."},
+      {id:56, tag:"Comparisons (more/most modifier)", stem:"Choose the best sentence.",
+        options:{A:"This method is more superior to the previous one.",
+                 B:"This method is superior to the previous one.",
+                 C:"This method is more better than the previous one.",
+                 D:"This method is most superior than the previous one."},
+        answer:"B", why:"Avoid double comparatives: <em>more superior</em>, <em>more better</em> are incorrect."},
+      {id:57, tag:"Comparisons (the + comparative, the + comparative)", stem:"Choose the grammatically correct sentence.",
+        options:{A:"The more you practice, the better you become.",
+                 B:"The more you practice, you become the better.",
+                 C:"More you practice, the better you become.",
+                 D:"The more you practice, the more better you become."},
+        answer:"A", why:"Correct correlative comparative pattern: <strong>The more..., the better...</strong>."},
+      {id:58, tag:"Comparisons (like vs as)", stem:"Choose the best sentence in formal writing.",
+        options:{A:"She writes like a journalist would.",
+                 B:"She writes as a journalist would.",
+                 C:"She writes like a journalist would do.",
+                 D:"She writes as a journalist."},
+        answer:"B", why:"Use <strong>as</strong> before a clause (<em>as a journalist would</em>); <strong>like</strong> is typically for noun phrases."},
+      {id:59, tag:"Comparisons (between/among)", stem:"Choose the best sentence.",
+        options:{A:"The differences between the three proposals are significant.",
+                 B:"The differences among the two proposals are significant.",
+                 C:"The differences among the proposals is significant.",
+                 D:"The differences between the proposals is significant."},
+        answer:"A", why:"Use <strong>between</strong> for distinct items in pairwise comparison (commonly acceptable even with three), and keep agreement: <strong>differences are</strong>."},
+      {id:60, tag:"Comparisons (parallelism in reduced clause)", stem:"Choose the best sentence.",
+        options:{A:"The new model is lighter, faster, and more durable than the old one.",
+                 B:"The new model is lighter, faster, and durability than the old one.",
+                 C:"The new model is lighter, faster, and more durability than the old one.",
+                 D:"The new model is light, fast, and more durable than the old one."},
+        answer:"A", why:"Keep parallel adjectives: <strong>lighter / faster / more durable</strong>."},
+      {id:61, tag:"Comparisons (than + clause consistency)", stem:"Choose the best sentence.",
+        options:{A:"She completed the task more quickly than he did.",
+                 B:"She completed the task more quickly than he did it.",
+                 C:"She completed the task more quickly than him did.",
+                 D:"She completed the task more quicker than he did."},
+        answer:"A", why:"Correct comparison with an implied clause: <strong>than he did</strong>. Avoid double comparative (<em>more quicker</em>)."},
+      {id:62, tag:"Comparisons (prefer X to Y)", stem:"Choose the sentence that is grammatically correct and idiomatic.",
+        options:{A:"I prefer reading than watching movies.",
+                 B:"I prefer reading to watch movies.",
+                 C:"I prefer reading to watching movies.",
+                 D:"I prefer to reading than watching movies."},
+        answer:"C", why:"Use <strong>prefer X to Y</strong> with parallel gerunds: <strong>reading</strong> / <strong>watching</strong>."},
+      {id:63, tag:"Comparisons (parallel structure with rather than)", stem:"Choose the best sentence.",
+        options:{A:"The company chose to expand rather than diversification.",
+                 B:"The company chose expansion rather than diversify.",
+                 C:"The company chose to expand rather than to diversify.",
+                 D:"The company chose to expand rather than diversifying."},
+        answer:"C", why:"Keep parallel infinitives: <strong>to expand</strong> / <strong>to diversify</strong>."},
+      {id:64, tag:"Comparisons (not so much A as B)", stem:"Choose the best sentence.",
+        options:{A:"His remark was not so much rude as it was careless.",
+                 B:"His remark was not so much rude as careless it was.",
+                 C:"His remark was not so much rudely as careless.",
+                 D:"His remark was not so much rudeness as careless."},
+        answer:"A", why:"Correct correlative comparison with balanced complements: <strong>not so much A as B</strong>."},
+      {id:65, tag:"Comparisons (clarifying implied object)", stem:"Choose the sentence that avoids the common comparison error.",
+        options:{A:"Her salary is higher than her colleague.",
+                 B:"Her salary is higher than her colleague’s.",
+                 C:"Her salary is higher than her colleague is.",
+                 D:"Her salary is higher than her colleague was."},
+        answer:"B", why:"Compare like with like: <strong>salary</strong> vs <strong>salary</strong>. Use possessive: <strong>colleague’s (salary)</strong>."}
+    ];
+
+    let state = { items:[...QUESTIONS], showMissedOnly:false, graded:false };
+
+    const quizEl = document.getElementById("quiz");
+    const teacherToggle = document.getElementById("teacherToggle");
+    const gradeBtn = document.getElementById("gradeBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+    const printBtn = document.getElementById("printBtn");
+    const showMissedBtn = document.getElementById("showMissedBtn");
+    const progressPill = document.getElementById("progressPill");
+    const scorePill = document.getElementById("scorePill");
+    const resultRow = document.getElementById("resultRow");
+    const bCorrect = document.getElementById("bCorrect");
+    const bWrong = document.getElementById("bWrong");
+    const bBlank = document.getElementById("bBlank");
+
+    function escapeHTML(str){
+      return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    function render(){
+      quizEl.innerHTML = "";
+      const itemsToShow = state.showMissedOnly ? getMissedItems() : state.items;
+
+      itemsToShow.forEach(q => {
+        const card = document.createElement("section");
+        card.className = "card";
+        card.dataset.qid = q.id;
+
+        const qhead = document.createElement("div");
+        qhead.className = "qhead";
+
+        const left = document.createElement("div");
+        left.style.display = "flex";
+        left.style.gap = "10px";
+        left.style.alignItems = "flex-start";
+
+        const qnum = document.createElement("div");
+        qnum.className = "qnum";
+        qnum.textContent = `Q${q.id}`;
+
+        const promptWrap = document.createElement("div");
+        const p = document.createElement("p");
+        p.className = "prompt";
+        p.textContent = q.stem;
+        promptWrap.appendChild(p);
+
+        left.appendChild(qnum);
+        left.appendChild(promptWrap);
+
+        const tag = document.createElement("div");
+        tag.className = "qtag";
+        tag.textContent = q.tag;
+
+        qhead.appendChild(left);
+        qhead.appendChild(tag);
+
+        const opts = document.createElement("div");
+        opts.className = "options";
+
+        ["A","B","C","D"].forEach(letter => {
+          const id = `q${q.id}_${letter}`;
+          const label = document.createElement("label");
+          label.className = "opt";
+          label.htmlFor = id;
+
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = `q${q.id}`;
+          radio.id = id;
+          radio.value = letter;
+          radio.addEventListener("change", () => {
+            updateProgress();
+            if(state.graded) grade(false);
+          });
+
+          const text = document.createElement("div");
+          text.innerHTML = `<strong>${letter}.</strong> ${escapeHTML(q.options[letter])}`;
+
+          label.appendChild(radio);
+          label.appendChild(text);
+          opts.appendChild(label);
+        });
+
+        const teacher = document.createElement("div");
+        teacher.className = "teacher";
+        teacher.innerHTML = `
+          <div><span class="ans">Answer: ${q.answer}</span></div>
+          <div class="why">${q.why}</div>
+        `;
+
+        card.appendChild(qhead);
+        card.appendChild(opts);
+        card.appendChild(teacher);
+        quizEl.appendChild(card);
+      });
+
+      applyTeacherMode();
+      updateProgress();
+      if(state.graded) grade(false);
+    }
+
+    function applyTeacherMode(){
+      const show = teacherToggle.checked;
+      document.querySelectorAll(".teacher").forEach(el => el.style.display = show ? "block" : "none");
+    }
+
+    function getSelections(){
+      const selections = {};
+      state.items.forEach(q => {
+        const checked = document.querySelector(`input[name="q${q.id}"]:checked`);
+        selections[q.id] = checked ? checked.value : null;
+      });
+      return selections;
+    }
+
+    function updateProgress(){
+      const selections = getSelections();
+      let answered = 0;
+      state.items.forEach(q => { if(selections[q.id]) answered++; });
+      progressPill.textContent = `Answered: ${answered} / ${state.items.length}`;
+    }
+
+    function grade(showSummary=true){
+      state.graded = true;
+      const selections = getSelections();
+
+      let correct = 0, wrong = 0, blank = 0;
+
+      document.querySelectorAll(".card").forEach(card => card.style.outline = "none");
+      document.querySelectorAll("label.opt").forEach(lab => {
+        lab.style.borderColor = "var(--line)";
+        lab.style.background = "#fff";
+      });
+
+      state.items.forEach(q => {
+        const chosen = selections[q.id];
+        if(!chosen){ blank++; return; }
+        if(chosen === q.answer) correct++; else wrong++;
+      });
+
+      const total = state.items.length;
+      const scorePct = Math.round((correct/total)*1000)/10;
+      scorePill.textContent = `Score: ${correct}/${total} (${scorePct}%)`;
+
+      state.items.forEach(q => {
+        const card = document.querySelector(`.card[data-qid="${q.id}"]`);
+        if(!card) return;
+
+        const chosen = selections[q.id];
+        if(!chosen){
+          card.style.outline = "2px solid rgba(217,119,6,.35)";
+          return;
+        }
+        card.style.outline = (chosen === q.answer)
+          ? "2px solid rgba(22,163,74,.35)"
+          : "2px solid rgba(220,38,38,.35)";
+
+        ["A","B","C","D"].forEach(letter => {
+          const label = card.querySelector(`label.opt[for="q${q.id}_${letter}"]`);
+          if(!label) return;
+          if(letter === q.answer){
+            label.style.borderColor = "rgba(22,163,74,.35)";
+            label.style.background = "rgba(22,163,74,.06)";
+          }
+          if(chosen === letter && chosen !== q.answer){
+            label.style.borderColor = "rgba(220,38,38,.35)";
+            label.style.background = "rgba(220,38,38,.05)";
+          }
+        });
+      });
+
+      if(showSummary){
+        resultRow.style.display = "flex";
+        bCorrect.textContent = `Correct: ${correct}`;
+        bWrong.textContent = `Wrong: ${wrong}`;
+        bBlank.textContent = `Blank: ${blank}`;
+      }
+    }
+
+    function resetAll(){
+      state.graded = false;
+      state.showMissedOnly = false;
+      showMissedBtn.textContent = "Show Missed";
+      resultRow.style.display = "none";
+      scorePill.textContent = "Score: —";
+
+      state.items.forEach(q => {
+        const checked = document.querySelector(`input[name="q${q.id}"]:checked`);
+        if(checked) checked.checked = false;
+      });
+
+      document.querySelectorAll(".card").forEach(card => card.style.outline = "none");
+      document.querySelectorAll("label.opt").forEach(lab => {
+        lab.style.borderColor = "var(--line)";
+        lab.style.background = "#fff";
+      });
+
+      updateProgress();
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    function shuffle(array){
+      for(let i=array.length-1; i>0; i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function getMissedItems(){
+      const selections = getSelections();
+      if(!state.graded){
+        return state.items.filter(q => !selections[q.id]);
+      }
+      const missed = state.items.filter(q => selections[q.id] && selections[q.id] !== q.answer);
+      const blank = state.items.filter(q => !selections[q.id]);
+      return missed.concat(blank);
+    }
+
+    teacherToggle.addEventListener("change", applyTeacherMode);
+    gradeBtn.addEventListener("click", () => grade(true));
+    resetBtn.addEventListener("click", () => resetAll());
+    shuffleBtn.addEventListener("click", () => {
+      state.items = shuffle([...state.items]);
+      state.showMissedOnly = false;
+      showMissedBtn.textContent = "Show Missed";
+      render();
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+    printBtn.addEventListener("click", () => window.print());
+    showMissedBtn.addEventListener("click", () => {
+      state.showMissedOnly = !state.showMissedOnly;
+      showMissedBtn.textContent = state.showMissedOnly ? "Show All" : "Show Missed";
+      render();
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+
+    render();
+  </script>
+</body>
+</html>
